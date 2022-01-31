@@ -28,12 +28,16 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-java:7.0.0'
     testImplementation 'io.cucumber:cucumber-junit:7.0.0'
 
-    // junit 4 vintage
+    // junit 4 vintager
     // https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.8.2'
 
+    // cucumber - junit5
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.0.0'
+    implementation 'org.junit.platform:junit-platform-suite:1.8.2'
 }
 
-tasks.named('test') {
+tasks.test {
     useJUnitPlatform()
+    systemProperty("cucumber.junit-platform.naming-strategy", "long")
 }
